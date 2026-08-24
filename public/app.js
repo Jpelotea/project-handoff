@@ -93,7 +93,7 @@
         body: new URLSearchParams(new FormData(form)).toString()
       });
       if (!response.ok) throw new Error(`Submission failed with status ${response.status}`);
-      window.handoffTrack?.('sign_up', { method: 'waitlist_form' });
+      window.handoffTrack?.('generate_lead', { method: 'waitlist_form' });
       if (status) status.textContent = 'Success. Taking you to confirmation…';
       window.setTimeout(() => { window.location.href = '/thanks/'; }, 350);
     } catch (error) {

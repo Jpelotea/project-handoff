@@ -36,7 +36,7 @@ The repository includes browser-verified [desktop](docs/design/project-handoff-d
 | --- | --- | --- |
 | `cta_click` | A waitlist CTA is activated | `cta_placement` |
 | `form_start` | First focus enters the form | `form_name` |
-| `sign_up` | Netlify confirms a successful submission | `method: "waitlist_form"` |
+| `generate_lead` | Netlify confirms a successful submission | `method: "waitlist_form"` |
 | `form_error` | Validation or submission fails | Error category/count only |
 
 No email address, team-size selection, workflow answer, or other form value is sent to GA4.

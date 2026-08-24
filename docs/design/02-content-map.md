@@ -13,7 +13,7 @@
 
 ## Conversion path
 
-Visitor → hero or contextual CTA → waitlist form → accessible validation → Netlify submission → thank-you page → GA4 `sign_up` after confirmed success and only with analytics consent.
+Visitor → hero or contextual CTA → waitlist form → accessible validation → Netlify submission → thank-you page → GA4 `generate_lead` after confirmed success and only with analytics consent.
 
 ## Supporting routes
 

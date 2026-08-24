@@ -42,8 +42,8 @@
 - [x] `cta_click` includes CTA placement only.
 - [x] `form_start` fires once per page session.
 - [x] `form_error` contains error type/count, never field values.
-- [x] `sign_up` uses `method: "waitlist_form"` only after a successful response.
-- [x] GA4 DebugView receives events with no form contents or email addresses.
+- [ ] `generate_lead` uses `method: "waitlist_form"` only after a successful response.
+- [ ] GA4 DebugView receives `generate_lead` with no form contents or email addresses.
 
 ## SEO and production
 
