@@ -1,0 +1,10 @@
+{
+  "name": "Project Handoff",
+  "short_name": "Handoff",
+  "description": "A fictional B2B SaaS portfolio concept for accountable recurring work.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ed",
+  "theme_color": "#102a2d",
+  "icons": [{ "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }]
+}

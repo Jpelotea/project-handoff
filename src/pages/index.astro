@@ -1,0 +1,174 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+
+const workflow = [
+  { number: '01', title: 'Capture the work', detail: 'Turn an approved scope into a reusable handoff with the owner, inputs, timing, and definition of done.' },
+  { number: '02', title: 'Run the handoff', detail: 'Move recurring client work through one focused view instead of rebuilding context across chat and documents.' },
+  { number: '03', title: 'Close the loop', detail: 'Confirm delivery, surface blockers, and carry useful context into the next cycle.' }
+];
+const benefits = [
+  ['Ownership that stays visible', 'Make the responsible person and next action obvious at every stage.'],
+  ['Reusable client context', 'Keep the brief, files, decisions, and delivery standard beside the work.'],
+  ['Fewer status-chasing loops', 'Give collaborators a shared view of what is ready, blocked, or complete.'],
+  ['A repeatable delivery rhythm', 'Build consistent handoffs without turning every project into a new process.']
+];
+const faqs = [
+  ['Is Project Handoff available now?', 'Not yet. This page is a fictional portfolio concept for a private-beta workflow product. The waitlist demonstrates a production-ready conversion path.'],
+  ['Who is the concept designed for?', 'Small agencies and consultancies with roughly 5–30 team members managing recurring client deliverables.'],
+  ['Does joining require a credit card?', 'No. The private beta is free to join and does not ask for payment information.'],
+  ['What information does the form collect?', 'A work email, a team-size range, and one workflow challenge. Form contents are never sent to analytics.'],
+  ['How is analytics consent handled?', 'Analytics is off by default. GA4 measurement starts only after an explicit opt-in and excludes form values.']
+];
+---
+<SiteLayout>
+  <header class="site-header" data-site-header>
+    <div class="container nav-shell">
+      <a class="brand" href="/" aria-label="Project Handoff home">
+        <span class="brand__mark" aria-hidden="true"><span></span><span></span></span>
+        <span>Project Handoff</span>
+      </a>
+      <nav class="desktop-nav" aria-label="Primary navigation">
+        <a href="#workflow">How it works</a>
+        <a href="#use-cases">Use cases</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="button button--small desktop-cta" href="#waitlist" data-cta="nav">Join private beta</a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open navigation menu" data-menu-toggle>
+        <span></span><span></span>
+      </button>
+    </div>
+    <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" data-mobile-nav hidden>
+      <a href="#workflow">How it works</a>
+      <a href="#use-cases">Use cases</a>
+      <a href="#faq">FAQ</a>
+      <a class="button" href="#waitlist" data-cta="mobile-nav">Join private beta</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero section-pad">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <span class="eyebrow"><span aria-hidden="true"></span> Private beta for client-service teams</span>
+          <h1>Turn recurring work into clear, accountable handoffs.</h1>
+          <p class="hero__lead">Project Handoff gives small agencies and consultancies one practical place to define ownership, preserve client context, and move repeat work forward.</p>
+          <div class="hero__actions">
+            <a class="button" href="#waitlist" data-cta="hero">Join the private beta <span aria-hidden="true">→</span></a>
+            <p>Private beta · Free to join · No credit card</p>
+          </div>
+        </div>
+        <div class="product-preview" aria-label="Illustration of the Project Handoff workspace">
+          <div class="preview-bar"><i></i><i></i><i></i><span>Client delivery / August</span></div>
+          <div class="preview-body">
+            <aside aria-hidden="true">
+              <b>PH</b>
+              <span class="active"></span><span></span><span></span><span></span>
+            </aside>
+            <div class="preview-main">
+              <div class="preview-heading">
+                <div><small>Northstar Studio</small><strong>Monthly campaign handoff</strong></div>
+                <span>In progress</span>
+              </div>
+              <div class="handoff-card handoff-card--accent">
+                <div class="card-top"><span>01 · Prepare</span><b>Owner: Maya</b></div>
+                <strong>Confirm campaign inputs</strong>
+                <p>Brief, approved copy, source assets</p>
+                <div class="progress"><i></i></div>
+              </div>
+              <div class="handoff-card">
+                <div class="card-top"><span>02 · Produce</span><b>Owner: Sam</b></div>
+                <strong>Build channel-ready assets</strong>
+                <p>Due Thursday · 3 dependencies</p>
+              </div>
+              <div class="preview-footer"><span>Next handoff</span><b>Client review · Friday 2:00 PM</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="signal-strip" aria-label="Product qualities">
+      <div class="container signal-strip__inner">
+        <span>Built for focused teams</span><i></i><span>Context beside the work</span><i></i><span>Ownership at every step</span><i></i><span>Consent-aware measurement</span>
+      </div>
+    </section>
+
+    <section class="problem section-pad" id="problem">
+      <div class="container split-heading">
+        <div><span class="section-kicker">The recurring-work gap</span><h2>Your delivery process should not live in everyone’s memory.</h2></div>
+        <div class="problem__copy"><p>Recurring client work often starts with a familiar request—then fragments across messages, old documents, and private checklists.</p><p>Project Handoff turns that invisible coordination into a lightweight, repeatable path from approved scope to confirmed delivery.</p></div>
+      </div>
+      <div class="container friction-grid" aria-label="Common delivery friction">
+        <article><span>Chat</span><strong>Decisions disappear into message history.</strong></article>
+        <article><span>Documents</span><strong>Useful context sits apart from the next action.</strong></article>
+        <article><span>Ownership</span><strong>Everyone can see the work, but no one owns the move.</strong></article>
+      </div>
+    </section>
+
+    <section class="workflow section-pad" id="workflow">
+      <div class="container section-heading">
+        <span class="section-kicker">How it works</span>
+        <h2>One calm path from brief to delivered.</h2>
+        <p>Enough structure to make responsibility visible, without forcing a small team into a heavyweight system.</p>
+      </div>
+      <div class="container steps">
+        {workflow.map((step) => <article><span>{step.number}</span><h3>{step.title}</h3><p>{step.detail}</p></article>)}
+      </div>
+    </section>
+
+    <section class="benefits section-pad">
+      <div class="container benefits__grid">
+        <div class="benefits__intro"><span class="section-kicker">Built for repeatability</span><h2>Make the work easier to pick up—and harder to drop.</h2><p>Project Handoff keeps each recurring delivery understandable to the person doing it, the lead reviewing it, and the client waiting for it.</p></div>
+        <div class="benefit-list">
+          {benefits.map(([title, detail], index) => <article><span>{String(index + 1).padStart(2, '0')}</span><div><h3>{title}</h3><p>{detail}</p></div></article>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="use-cases section-pad" id="use-cases">
+      <div class="container section-heading section-heading--light">
+        <span class="section-kicker">Use cases</span><h2>Designed around the work client-service teams repeat.</h2>
+      </div>
+      <div class="container use-case-grid">
+        <article><span class="case-label">For agencies</span><h3>Campaign and content delivery</h3><p>Carry approved inputs through production, review, and client-ready delivery without rebuilding the brief every cycle.</p><ul><li>Monthly content packages</li><li>Campaign launches</li><li>Creative review rounds</li></ul></article>
+        <article><span class="case-label">For consultancies</span><h3>Reports and recurring advisory work</h3><p>Preserve the assumptions, source material, and ownership needed to deliver consistent client outputs.</p><ul><li>Performance reporting</li><li>Research updates</li><li>Implementation check-ins</li></ul></article>
+      </div>
+    </section>
+
+    <section class="waitlist section-pad" id="waitlist">
+      <div class="container waitlist__grid">
+        <div class="waitlist__copy"><span class="section-kicker">Private beta</span><h2>Help shape a calmer client-delivery workflow.</h2><p>Join the concept waitlist and share the recurring handoff your team most wants to improve.</p><div class="trust-card"><span aria-hidden="true">✓</span><p><strong>Privacy by design</strong>Form contents stay out of analytics. Measurement starts only after consent.</p></div></div>
+        <form class="waitlist-form" name="project-handoff-waitlist" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company-website" novalidate data-waitlist-form>
+          <input type="hidden" name="form-name" value="project-handoff-waitlist" />
+          <p class="honeypot"><label>Do not fill this out: <input name="company-website" autocomplete="off" tabindex="-1" /></label></p>
+          <div class="form-heading"><h3>Join the waitlist</h3><p>Three fields. No credit card. No mailing-list surprises.</p></div>
+          <div class="field"><label for="work-email">Work email</label><input id="work-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="work-email-error" placeholder="you@company.com" /><span class="field-error" id="work-email-error" aria-live="polite"></span></div>
+          <div class="field"><label for="team-size">Team size</label><select id="team-size" name="team-size" required aria-describedby="team-size-error"><option value="">Choose a range</option><option value="2-4">2–4 people</option><option value="5-10">5–10 people</option><option value="11-20">11–20 people</option><option value="21-30">21–30 people</option><option value="31-plus">31+ people</option></select><span class="field-error" id="team-size-error" aria-live="polite"></span></div>
+          <div class="field"><label for="workflow-challenge">Primary workflow challenge</label><select id="workflow-challenge" name="workflow-challenge" required aria-describedby="workflow-challenge-error"><option value="">Choose one</option><option value="ownership">Unclear ownership</option><option value="context">Scattered client context</option><option value="status">Too much status chasing</option><option value="repeatability">Inconsistent repeat processes</option><option value="other">Something else</option></select><span class="field-error" id="workflow-challenge-error" aria-live="polite"></span></div>
+          <label class="consent-check"><input type="checkbox" name="contact-consent" required aria-describedby="contact-consent-error" /><span>I agree to be contacted about the Project Handoff private beta and understand this is a fictional portfolio concept.</span></label><span class="field-error" id="contact-consent-error" aria-live="polite"></span>
+          <button class="button form-submit" type="submit"><span data-submit-label>Join private beta</span><span class="spinner" data-submit-spinner hidden aria-hidden="true"></span></button>
+          <p class="form-status" data-form-status aria-live="polite"></p>
+          <p class="form-privacy">By submitting, you agree to the <a href="/privacy/">privacy notice</a>. Form contents are not sent to GA4.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="faq section-pad" id="faq">
+      <div class="container faq__grid">
+        <div><span class="section-kicker">FAQ</span><h2>Useful details, without the fine-print maze.</h2></div>
+        <div class="faq-list">
+          {faqs.map(([question, answer], index) => <details open={index === 0}><summary><span>{question}</span><i aria-hidden="true"></i></summary><p>{answer}</p></details>)}
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta__inner"><div><span class="section-kicker">Ready for a better handoff?</span><h2>Make recurring work easier to own.</h2></div><div><a class="button button--light" href="#waitlist" data-cta="final">Join the private beta <span aria-hidden="true">→</span></a><p>Free to join · No credit card</p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer__top"><a class="brand" href="/"><span class="brand__mark" aria-hidden="true"><span></span><span></span></span><span>Project Handoff</span></a><p>A fictional product concept built to demonstrate conversion-focused frontend delivery.</p></div>
+    <div class="container footer__bottom"><span>© 2026 Project Handoff concept</span><nav aria-label="Footer navigation"><a href="/privacy/">Privacy</a><a href="#faq">FAQ</a><a href="mailto:jcpelotea.business@gmail.com">Contact</a></nav></div>
+  </footer>
+</SiteLayout>

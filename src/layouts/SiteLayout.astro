@@ -1,0 +1,117 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+  robots?: string;
+}
+
+const siteUrl = import.meta.env.PUBLIC_SITE_URL || 'https://project-handoff.netlify.app';
+const measurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
+const {
+  title = 'Project Handoff — Clear, accountable recurring work',
+  description = 'Turn recurring agency and consultancy work into clear, accountable handoffs.',
+  canonical = Astro.url.pathname,
+  image = '/og-project-handoff.svg',
+  robots = 'index, follow'
+} = Astro.props;
+const canonicalUrl = new URL(canonical, siteUrl).toString();
+const imageUrl = new URL(image, siteUrl).toString();
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <meta name="theme-color" content="#f7f4ed" />
+    <title>{title}</title>
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:image:type" content="image/svg+xml" />
+    <meta property="og:site_name" content="Project Handoff" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
+    <script is:inline define:vars={{ measurementId }}>
+      (() => {
+        const storageKey = 'handoff-analytics-consent';
+        const state = { loaded: false, consent: localStorage.getItem(storageKey) };
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () { window.dataLayer.push(arguments); };
+        window.gtag('consent', 'default', {
+          analytics_storage: 'denied',
+          ad_storage: 'denied',
+          ad_user_data: 'denied',
+          ad_personalization: 'denied',
+          wait_for_update: 500
+        });
+
+        const loadAnalytics = () => {
+          if (state.loaded || !measurementId) return;
+          state.loaded = true;
+          const script = document.createElement('script');
+          script.async = true;
+          script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+          document.head.append(script);
+          window.gtag('js', new Date());
+          window.gtag('config', measurementId, { anonymize_ip: true });
+          window.dispatchEvent(new CustomEvent('handoff:analytics-ready'));
+        };
+
+        window.handoffTrack = (eventName, parameters = {}) => {
+          if (state.consent !== 'granted' || !measurementId) return false;
+          loadAnalytics();
+          window.gtag('event', eventName, parameters);
+          return true;
+        };
+
+        window.handoffSetConsent = (value) => {
+          state.consent = value;
+          localStorage.setItem(storageKey, value);
+          window.gtag('consent', 'update', {
+            analytics_storage: value,
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied'
+          });
+          if (value === 'granted') loadAnalytics();
+          window.dispatchEvent(new CustomEvent('handoff:consent-change', { detail: value }));
+        };
+
+        window.handoffConsent = () => state.consent;
+        if (state.consent === 'granted') {
+          window.gtag('consent', 'update', { analytics_storage: 'granted' });
+          loadAnalytics();
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <slot />
+
+    <aside class="consent" data-consent-banner hidden aria-labelledby="consent-title">
+      <div>
+        <strong id="consent-title">Privacy-respecting measurement</strong>
+        <p>Optional analytics help evaluate this portfolio concept. No form answers or email addresses are sent to GA4.</p>
+      </div>
+      <div class="consent__actions">
+        <button class="button button--small" type="button" data-consent-accept>Allow analytics</button>
+        <button class="text-button" type="button" data-consent-reject>Continue without</button>
+      </div>
+    </aside>
+    <script src="/app.js" defer></script>
+  </body>
+</html>
