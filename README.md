@@ -6,7 +6,8 @@ Project Handoff is a fictional B2B SaaS landing-page concept for small agencies 
 
 ## Live experience
 
-Deployment URL will be added after production Netlify verification.
+- Production site: [project-handoff-jc.netlify.app](https://project-handoff-jc.netlify.app)
+- Source: [github.com/Jpelotea/project-handoff](https://github.com/Jpelotea/project-handoff)
 
 ## Evidence
 
@@ -27,7 +28,7 @@ The inspectable design record lives in [`docs/design`](docs/design):
 4. [Decision log](docs/design/04-decision-log.md)
 5. [QA checklist](docs/design/05-qa-checklist.md)
 
-Desktop and mobile reference-frame exports will be committed after browser QA. A public Figma view link will be added only after the frames, tokens, components, responsive annotations, and interaction states are complete.
+The repository includes browser-verified [desktop](docs/design/project-handoff-desktop-1440.png) and [mobile](docs/design/project-handoff-mobile-390.png) reference-frame exports. A Figma draft was started to reproduce the coded system as editable tokens and components, but the Starter-plan MCP call limit paused that work after the color and spacing variables. The Figma file is intentionally not presented as completed evidence; the code, exported frames, and written decision record remain the inspectable design source.
 
 ## Analytics contract
 
@@ -53,4 +54,4 @@ Production verification:
 npm run verify
 ```
 
-Copy `.env.example` to `.env` only when validating a real GA4 property. Do not commit the environment file.
+Copy `.env.example` to `.env` only when validating a real GA4 property. The production measurement ID is configured through Netlify's environment settings; do not commit a local `.env` file.

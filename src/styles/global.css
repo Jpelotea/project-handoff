@@ -3,6 +3,7 @@
   --surface: #fffdf8;
   --surface-muted: #eee9df;
   --ink: #102a2d;
+  --ink-hover: #194146;
   --ink-soft: #4c5d5d;
   --teal: #176f68;
   --teal-bright: #78d7c6;
@@ -10,6 +11,7 @@
   --sand: #eadfcf;
   --line: #d6d5cc;
   --danger: #a73535;
+  --focus: #e39c42;
   --white: #fff;
   --shadow-sm: 0 8px 28px rgba(16, 42, 45, .08);
   --shadow-lg: 0 30px 80px rgba(16, 42, 45, .16);
@@ -36,7 +38,7 @@ img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration-thickness: .08em; text-underline-offset: .2em; }
 button, input, select { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid #e39c42; outline-offset: 4px; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }
 .container { width: min(calc(100% - 2rem), var(--content)); margin-inline: auto; }
 .section-pad { padding-block: clamp(5rem, 9vw, 8rem); }
 .skip-link { position: fixed; z-index: 999; top: 1rem; left: 1rem; padding: .75rem 1rem; border-radius: var(--radius-sm); background: var(--ink); color: white; transform: translateY(-180%); }
@@ -50,7 +52,7 @@ h2 { margin-bottom: 1.5rem; font-size: clamp(2.3rem, 4.4vw, 4rem); }
 h3 { font-size: 1.25rem; }
 p { color: var(--ink-soft); }
 .button { display: inline-flex; min-height: 3.25rem; align-items: center; justify-content: center; gap: .75rem; padding: .85rem 1.3rem; border: 1px solid var(--ink); border-radius: var(--radius-sm); background: var(--ink); color: white; font-weight: 760; line-height: 1.1; text-decoration: none; cursor: pointer; transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease; }
-.button:hover { transform: translateY(-2px); background: #194146; box-shadow: var(--shadow-sm); }
+.button:hover { transform: translateY(-2px); background: var(--ink-hover); box-shadow: var(--shadow-sm); }
 .button--small { min-height: 2.75rem; padding: .7rem 1rem; font-size: .9rem; }
 .button--light { border-color: var(--canvas); background: var(--canvas); color: var(--ink); }
 .button--light:hover { background: white; }
