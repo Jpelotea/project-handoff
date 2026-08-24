@@ -41,6 +41,8 @@ The repository includes browser-verified [desktop](docs/design/project-handoff-d
 
 No email address, team-size selection, workflow answer, or other form value is sent to GA4.
 
+For release verification, append `?ga_debug=1` before opting in. That marks the browser session for GA4 DebugView without placing the site in permanent debug mode.
+
 ## Local development
 
 ```sh

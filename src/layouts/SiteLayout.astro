@@ -66,7 +66,8 @@ const imageUrl = new URL(image, siteUrl).toString();
           script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
           document.head.append(script);
           window.gtag('js', new Date());
-          window.gtag('config', measurementId, { anonymize_ip: true });
+          const debugMode = new URLSearchParams(window.location.search).has('ga_debug');
+          window.gtag('config', measurementId, { anonymize_ip: true, debug_mode: debugMode });
           window.dispatchEvent(new CustomEvent('handoff:analytics-ready'));
         };
 
